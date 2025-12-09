@@ -1,0 +1,432 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: #050816;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 5%;
+    background: rgba(5, 8, 22, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.top-bar nav a {
+    margin-left: 1.25rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #e5e7eb;
+    padding-bottom: 0.15rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.top-bar nav a:hover {
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.hero {
+    padding: 3.5rem 5% 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+    gap: 2.5rem;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 3vw, 2.8rem);
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    color: #d1d5db;
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: linear-gradient(135deg, #38bdf8, #4ade80);
+    color: #020617;
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+button.secondary {
+    background: transparent;
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    box-shadow: none;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 35px rgba(56, 189, 248, 0.5);
+    opacity: 0.95;
+}
+
+button.secondary:hover {
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.hero-tags span {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    color: #cbd5f5;
+}
+
+.hero-panel {
+    background: radial-gradient(circle at top left, #1f2937, #020617);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.hero-panel h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.disk-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.disk-block {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.3rem;
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.disk-block.used {
+    background: #38bdf8;
+}
+
+.disk-block.free {
+    background: #0f172a;
+}
+
+.disk-block.corrupted {
+    background: #ef4444;
+}
+
+.disk-block.recovered {
+    background: #4ade80;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.legend-item::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+}
+
+.legend-item.used::before {
+    background: #38bdf8;
+}
+
+.legend-item.free::before {
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.legend-item.corrupted::before {
+    background: #ef4444;
+}
+
+.legend-item.recovered::before {
+    background: #4ade80;
+}
+
+.section {
+    padding: 3rem 5%;
+}
+
+.section.alt {
+    background: radial-gradient(circle at top, #020617, #030712);
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.25rem;
+}
+
+.card {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 1.1rem;
+    padding: 1.25rem 1.3rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+}
+
+.card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.card ul {
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+.modules-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+    gap: 2rem;
+}
+
+.modules-tree {
+    background: rgba(15, 23, 42, 0.98);
+    border-radius: 1rem;
+    padding: 1rem 1.4rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    font-size: 0.85rem;
+}
+
+.modules-tree ul {
+    list-style: none;
+}
+
+.modules-tree li {
+    margin: 0.2rem 0;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.modules-tree li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.75rem;
+    color: #38bdf8;
+}
+
+.modules-text p, .modules-text ul {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    margin-bottom: 0.75rem;
+}
+
+.modules-text ul {
+    padding-left: 1rem;
+}
+
+.simulation-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 3fr);
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.sim-controls {
+    background: rgba(15, 23, 42, 0.98);
+    border-radius: 1.1rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    display: grid;
+    gap: 0.8rem;
+}
+
+.sim-controls label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.sim-controls input,
+.sim-controls select {
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.55rem;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.sim-controls button {
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+.sim-log {
+    background: rgba(15, 23, 42, 0.98);
+    border-radius: 1.1rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.sim-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+}
+
+.indicator {
+    padding: 0.18rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    font-size: 0.7rem;
+}
+
+.log-output {
+    background: #020617;
+    border-radius: 0.75rem;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+    max-height: 240px;
+    overflow-y: auto;
+    color: #e5e7eb;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+}
+
+.metric-label {
+    color: #9ca3af;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.metric-value {
+    font-weight: 600;
+}
+
+/* New: chart styling */
+.metrics-chart {
+    margin-top: 0.75rem;
+    width: 100%;
+    max-height: 200px;
+}
+
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    font-size: 0.95rem;
+    color: #d1d5db;
+}
+
+.about-grid ul,
+.about-grid ol {
+    padding-left: 1.2rem;
+}
+
+.footer {
+    padding: 1rem 5%;
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+    font-size: 0.8rem;
+    color: #9ca3af;
+    text-align: center;
+    background: #020617;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .hero-panel {
+        order: -1;
+    }
+    .modules-layout,
+    .simulation-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .top-bar nav {
+        display: none;
+    }
+    .hero {
+        padding-top: 2.2rem;
+    }
+}
