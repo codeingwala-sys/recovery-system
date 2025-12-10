@@ -277,7 +277,8 @@ button.secondary:hover {
     color: #38bdf8;
 }
 
-.modules-text p, .modules-text ul {
+.modules-text p,
+.modules-text ul {
     font-size: 0.95rem;
     color: #d1d5db;
     margin-bottom: 0.75rem;
@@ -407,15 +408,54 @@ button.secondary:hover {
     color: #9ca3af;
     text-align: center;
     background: #020617;
+    max-height: 180px;
+    overflow-y: auto;
+
 }
+
+.unrecovered-list {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #1e293b;
+    border: 1px solid rgba(148,163,184,0.4);
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+
+    /* ⭐ ADD THESE TWO LINES */
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.unrecovered-list h4 {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #f87171;
+}
+
+.unrecovered-item {
+    margin-bottom: 0.35rem;
+}
+
+.unrecovered-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.unrecovered-list::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
 
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: minmax(0, 1fr);
     }
+
     .hero-panel {
         order: -1;
     }
+
     .modules-layout,
     .simulation-layout {
         grid-template-columns: minmax(0, 1fr);
@@ -426,6 +466,7 @@ button.secondary:hover {
     .top-bar nav {
         display: none;
     }
+
     .hero {
         padding-top: 2.2rem;
     }

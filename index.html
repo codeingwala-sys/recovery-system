@@ -1,277 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
     <title>FS-RO: File System Recovery & Optimization Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="recovery.css">
 </head>
+
 <body>
-<header class="top-bar">
-    <div class="logo">FS-RO<span>Tool</span></div>
-    <nav>
-        <a href="#overview">Overview</a>
-        <a href="#features">Features</a>
-        <a href="#modules">Tool Modules</a>
-        <a href="#simulation">Simulation</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#about">About</a>
-    </nav>
-</header>
+    <header class="top-bar">
+        <div class="logo">FS-RO<span>Tool</span></div>
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#features">Features</a>
+            <a href="#modules">Tool Modules</a>
+            <a href="#simulation">Simulation</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
 
-<main>
-    <section class="hero" id="overview">
-        <div class="hero-content">
-            <h1>File System Recovery & Optimization Tool</h1>
-            <p>
-                Simulate file system crashes, recover lost data structures, and optimize disk
-                read/write performance through intelligent free-space management and access strategies.
-            </p>
-            <div class="hero-actions">
-                <button id="startSimulationBtn">Run Quick Simulation</button>
-                <button class="secondary" id="viewReportBtn">View Last Report</button>
-            </div>
-            <div class="hero-tags">
-                <span>Free-space Management</span>
-                <span>Directory Structures</span>
-                <span>File Access Mechanisms</span>
-                <span>Crash Recovery</span>
-            </div>
-        </div>
-        <div class="hero-panel">
-            <h2>Disk Snapshot</h2>
-            <div class="disk-grid" id="diskGrid"></div>
-            <div class="legend">
-                <span class="legend-item used">Used</span>
-                <span class="legend-item free">Free</span>
-                <span class="legend-item corrupted">Corrupted</span>
-                <span class="legend-item recovered">Recovered</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features">
-        <h2>Key Capabilities</h2>
-        <div class="cards-grid">
-            <article class="card">
-                <h3>Free-space Management</h3>
-                <ul>
-                    <li>Bit vector &amp; linked-list based free-space tracking</li>
-                    <li>Best-fit, first-fit &amp; next-fit allocation strategies</li>
-                    <li>Fragmentation analysis dashboard</li>
-                    <li>Space utilization heatmap</li>
-                </ul>
-            </article>
-            <article class="card">
-                <h3>Directory Structures</h3>
-                <ul>
-                    <li>Single-level, tree-based and acyclic graph directory models</li>
-                    <li>Inode-style metadata representation</li>
-                    <li>Path resolution &amp; consistency checks</li>
-                    <li>Recovery of orphaned directory entries</li>
-                </ul>
-            </article>
-            <article class="card">
-                <h3>File Access &amp; I/O Paths</h3>
-                <ul>
-                    <li>Sequential &amp; direct access patterns</li>
-                    <li>Caching &amp; prefetching simulation</li>
-                    <li>Logical to physical block mapping</li>
-                    <li>Average seek, latency &amp; throughput metrics</li>
-                </ul>
-            </article>
-            <article class="card">
-                <h3>Recovery Engine</h3>
-                <ul>
-                    <li>Crash simulation (power loss, metadata damage)</li>
-                    <li>Journaling &amp; log replay demo</li>
-                    <li>Checkpoint &amp; rollback visualization</li>
-                    <li>Report generation with before/after comparison</li>
-                </ul>
-            </article>
-        </div>
-    </section>
-
-    <section class="section alt" id="modules">
-        <h2>Tool Modules</h2>
-        <div class="modules-layout">
-            <div class="modules-tree">
-                <ul>
-                    <li>FS-RO Core
-                        <ul>
-                            <li>Disk Model
-                                <ul>
-                                    <li>Block Manager</li>
-                                    <li>Free-space Manager</li>
-                                </ul>
-                            </li>
-                            <li>File System Layer
-                                <ul>
-                                    <li>Directory Manager</li>
-                                    <li>Inode Manager</li>
-                                </ul>
-                            </li>
-                            <li>Recovery Engine
-                                <ul>
-                                    <li>Crash Simulator</li>
-                                    <li>Journal Replayer</li>
-                                    <li>Consistency Checker</li>
-                                </ul>
-                            </li>
-                            <li>Optimization Engine
-                                <ul>
-                                    <li>Defragmenter</li>
-                                    <li>Access Pattern Analyzer</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="modules-text">
+    <main>
+        <section class="hero" id="overview">
+            <div class="hero-content">
+                <h1>File System Recovery & Optimization Tool</h1>
                 <p>
-                    The tool is organized into modular components, making it ideal for academic
-                    projects and demonstrations. Each module can be enabled or disabled independently
-                    to focus on a specific concept from operating systems or file system design.
+                    Simulate file system crashes, recover lost data structures, and optimize disk
+                    read/write performance through intelligent free-space management and access strategies.
                 </p>
-                <p>
-                    Example use-cases:
-                </p>
-                <ul>
-                    <li>Compare how different free-space allocation strategies impact fragmentation.</li>
-                    <li>Show how directory trees are rebuilt after a simulated crash.</li>
-                    <li>Visualize the benefit of journaling when updates are interrupted.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="simulation">
-        <h2>Crash &amp; Recovery Simulation</h2>
-        <div class="simulation-layout">
-            <div class="sim-controls">
-                <label>
-                    Disk Size (blocks)
-                    <input id="diskSizeInput" type="number" value="64" min="16" max="256">
-                </label>
-                <label>
-                    Corruption Percentage (%)
-                    <input id="corruptionInput" type="number" value="20" min="1" max="80">
-                </label>
-                <label>
-                    Allocation Strategy
-                    <select id="strategySelect">
-                        <option value="first">First Fit</option>
-                        <option value="best">Best Fit</option>
-                        <option value="next">Next Fit</option>
-                    </select>
-                </label>
-                <button id="crashBtn">Simulate Disk Crash</button>
-                <button id="recoverBtn">Run Recovery</button>
-            </div>
-            <div class="sim-log">
-                <div class="sim-log-header">
-                    <span>Recovery Console</span>
-                    <span class="indicator" id="simStatusIndicator">Idle</span>
+                <div class="hero-actions">
+                    <button id="startSimulationBtn">Run Quick Simulation</button>
+                    <button class="secondary" id="viewReportBtn">View Last Report</button>
                 </div>
-                <pre id="logOutput" class="log-output">
+                <div class="hero-tags">
+                    <span>Free-space Management</span>
+                    <span>Directory Structures</span>
+                    <span>File Access Mechanisms</span>
+                    <span>Crash Recovery</span>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <h2>Disk Snapshot</h2>
+                <div class="disk-grid" id="diskGrid"></div>
+                <div class="legend">
+                    <span class="legend-item used">Used</span>
+                    <span class="legend-item free">Free</span>
+                    <span class="legend-item corrupted">Corrupted</span>
+                    <span class="legend-item recovered">Recovered</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <h2>Key Capabilities</h2>
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Free-space Management</h3>
+                    <ul>
+                        <li>Bit vector &amp; linked-list based free-space tracking</li>
+                        <li>Best-fit, first-fit &amp; next-fit allocation strategies</li>
+                        <li>Fragmentation analysis dashboard</li>
+                        <li>Space utilization heatmap</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Directory Structures</h3>
+                    <ul>
+                        <li>Single-level, tree-based and acyclic graph directory models</li>
+                        <li>Inode-style metadata representation</li>
+                        <li>Path resolution &amp; consistency checks</li>
+                        <li>Recovery of orphaned directory entries</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>File Access &amp; I/O Paths</h3>
+                    <ul>
+                        <li>Sequential &amp; direct access patterns</li>
+                        <li>Caching &amp; prefetching simulation</li>
+                        <li>Logical to physical block mapping</li>
+                        <li>Average seek, latency &amp; throughput metrics</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Recovery Engine</h3>
+                    <ul>
+                        <li>Crash simulation (power loss, metadata damage)</li>
+                        <li>Journaling &amp; log replay demo</li>
+                        <li>Checkpoint &amp; rollback visualization</li>
+                        <li>Report generation with before/after comparison</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section alt" id="modules">
+            <h2>Tool Modules</h2>
+            <div class="modules-layout">
+                <div class="modules-tree">
+                    <ul>
+                        <li>FS-RO Core
+                            <ul>
+                                <li>Disk Model
+                                    <ul>
+                                        <li>Block Manager</li>
+                                        <li>Free-space Manager</li>
+                                    </ul>
+                                </li>
+                                <li>File System Layer
+                                    <ul>
+                                        <li>Directory Manager</li>
+                                        <li>Inode Manager</li>
+                                    </ul>
+                                </li>
+                                <li>Recovery Engine
+                                    <ul>
+                                        <li>Crash Simulator</li>
+                                        <li>Journal Replayer</li>
+                                        <li>Consistency Checker</li>
+                                    </ul>
+                                </li>
+                                <li>Optimization Engine
+                                    <ul>
+                                        <li>Defragmenter</li>
+                                        <li>Access Pattern Analyzer</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modules-text">
+                    <p>
+                        The tool is organized into modular components, making it ideal for academic
+                        projects and demonstrations. Each module can be enabled or disabled independently
+                        to focus on a specific concept from operating systems or file system design.
+                    </p>
+                    <p>
+                        Example use-cases:
+                    </p>
+                    <ul>
+                        <li>Compare how different free-space allocation strategies impact fragmentation.</li>
+                        <li>Show how directory trees are rebuilt after a simulated crash.</li>
+                        <li>Visualize the benefit of journaling when updates are interrupted.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="simulation">
+            <div id="unrecoveredList" class="unrecovered-list"></div>
+            <h2>Crash &amp; Recovery Simulation</h2>
+            <div class="simulation-layout">
+                <div class="sim-controls">
+                    <label>
+                        Disk Size (blocks)
+                        <input id="diskSizeInput" type="number" value="64" min="16" max="256">
+                    </label>
+                    <label>
+                        Corruption Percentage (%)
+                        <input id="corruptionInput" type="number" value="20" min="1" max="80">
+                    </label>
+                    <label>
+                        Allocation Strategy
+                        <select id="strategySelect">
+                            <option value="first">First Fit</option>
+                            <option value="best">Best Fit</option>
+                            <option value="next">Next Fit</option>
+                        </select>
+                    </label>
+                    <button id="crashBtn">Simulate Disk Crash</button>
+                    <button id="recoverBtn">Run Recovery</button>
+                </div>
+                <div class="sim-log">
+                    <div class="sim-log-header">
+                        <span>Recovery Console</span>
+                        <span class="indicator" id="simStatusIndicator">Idle</span>
+                    </div>
+
+                    <pre id="logOutput" class="log-output">
 FS-RO Tool > Ready.
 Click "Simulate Disk Crash" to begin...
                 </pre>
-                <div class="metrics" id="metricsPanel">
-                    <div>
-                        <span class="metric-label">Avg Read Time</span>
-                        <span class="metric-value" id="readTime">—</span>
+                    <div class="metrics" id="metricsPanel">
+                        <div>
+                            <span class="metric-label">Avg Read Time</span>
+                            <span class="metric-value" id="readTime">—</span>
+                        </div>
+                        <div>
+                            <span class="metric-label">Avg Write Time</span>
+                            <span class="metric-value" id="writeTime">—</span>
+                        </div>
+                        <div>
+                            <span class="metric-label">Fragmentation</span>
+                            <span class="metric-value" id="fragmentation">—</span>
+                        </div>
                     </div>
-                    <div>
-                        <span class="metric-label">Avg Write Time</span>
-                        <span class="metric-value" id="writeTime">—</span>
-                    </div>
-                    <div>
-                        <span class="metric-label">Fragmentation</span>
-                        <span class="metric-value" id="fragmentation">—</span>
-                    </div>
+                    <!-- Graph for metrics -->
+                    <canvas id="metricsChart" class="metrics-chart"></canvas>
                 </div>
-                <!-- Graph for metrics -->
-                <canvas id="metricsChart" class="metrics-chart"></canvas>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section alt" id="architecture">
-        <h2>Conceptual Architecture</h2>
-        <div class="architecture-grid">
-            <article class="card">
-                <h3>1. Free-space Management</h3>
-                <p>
-                    Models bitmaps and linked lists to represent free and used blocks. The
-                    simulator measures fragmentation and space utilization for a selected strategy.
-                </p>
-            </article>
-            <article class="card">
-                <h3>2. Directory Handling</h3>
-                <p>
-                    Simulated directory entries maintain file names, inodes, and parent pointers.
-                    During recovery, missing links are detected and reconstructed when possible.
-                </p>
-            </article>
-            <article class="card">
-                <h3>3. File Access Layer</h3>
-                <p>
-                    Logical file offsets are mapped to physical blocks. The model estimates
-                    average seek distances and queueing delays to compute approximate I/O times.
-                </p>
-            </article>
-            <article class="card">
-                <h3>4. Recovery Strategy</h3>
-                <p>
-                    Combines journaling-like logs and consistency checks to restore a valid
-                    state after crashes, while preserving as much data as possible.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="section" id="about">
-        <h2>Project Notes</h2>
-        <div class="about-grid">
-            <div>
-                <h3>Intended Use</h3>
-                <p>
-                    This website can be used as the front-end for an academic project
-                    on Operating Systems or File Systems. You can connect the controls to
-                    a real back-end simulator or keep the built-in JavaScript simulation
-                    for demo purposes.
-                </p>
-                <p>
-                    Suggested report sections:
-                </p>
-                <ul>
-                    <li>Background on file system design.</li>
-                    <li>Algorithms for free-space management.</li>
-                    <li>Crash scenarios and recovery techniques.</li>
-                    <li>Performance evaluation and optimization strategies.</li>
-                </ul>
+        <section class="section alt" id="architecture">
+            <h2>Conceptual Architecture</h2>
+            <div class="architecture-grid">
+                <article class="card">
+                    <h3>1. Free-space Management</h3>
+                    <p>
+                        Models bitmaps and linked lists to represent free and used blocks. The
+                        simulator measures fragmentation and space utilization for a selected strategy.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>2. Directory Handling</h3>
+                    <p>
+                        Simulated directory entries maintain file names, inodes, and parent pointers.
+                        During recovery, missing links are detected and reconstructed when possible.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>3. File Access Layer</h3>
+                    <p>
+                        Logical file offsets are mapped to physical blocks. The model estimates
+                        average seek distances and queueing delays to compute approximate I/O times.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>4. Recovery Strategy</h3>
+                    <p>
+                        Combines journaling-like logs and consistency checks to restore a valid
+                        state after crashes, while preserving as much data as possible.
+                    </p>
+                </article>
             </div>
-            <div>
-                <h3>How to Run</h3>
-                <ol>
-                    <li>Extract the project folder.</li>
-                    <li>Open <code>index.html</code> in any modern browser.</li>
-                    <li>Use the simulation panel to generate crash and recovery reports.</li>
-                    <li>Modify <code>script.js</code> to plug in your own algorithms.</li>
-                </ol>
+        </section>
+
+        <section class="section" id="about">
+            <h2>Project Notes</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>Intended Use</h3>
+                    <p>
+                        This website can be used as the front-end for an academic project
+                        on Operating Systems or File Systems. You can connect the controls to
+                        a real back-end simulator or keep the built-in JavaScript simulation
+                        for demo purposes.
+                    </p>
+                    <p>
+                        Suggested report sections:
+                    </p>
+                    <ul>
+                        <li>Background on file system design.</li>
+                        <li>Algorithms for free-space management.</li>
+                        <li>Crash scenarios and recovery techniques.</li>
+                        <li>Performance evaluation and optimization strategies.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>How to Run</h3>
+                    <ol>
+                        <li>Extract the project folder.</li>
+                        <li>Open <code>index.html</code> in any modern browser.</li>
+                        <li>Use the simulation panel to generate crash and recovery reports.</li>
+                        <li>Modify <code>script.js</code> to plug in your own algorithms.</li>
+                    </ol>
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
-<footer class="footer">
-    <p>FS-RO Tool &mdash; File System Recovery &amp; Optimization &bull; Demo Front-end</p>
-</footer>
+    <footer class="footer">
+        <p>FS-RO Tool &mdash; File System Recovery &amp; Optimization &bull; Demo Front-end</p>
+    </footer>
 
-<!-- Load Chart.js, then your script -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
+    <!-- Load Chart.js, then your script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
